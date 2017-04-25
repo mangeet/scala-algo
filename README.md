@@ -1,2 +1,2 @@
 # scala-algo
-# scala-algo
+Algorithms in Scala
