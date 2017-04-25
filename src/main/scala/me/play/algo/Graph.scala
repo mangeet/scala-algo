@@ -17,26 +17,26 @@ object Graph {
 }
 
 /* Graph definition */
-class Graph(numOfVertices: Int, adjVertices: Map[Int, Stack[Int]]) {
+class Graph[T](val numOfVertices: Int, adjVertices: Map[T, Stack[T]]) {
 
-  def adjTo(v: Int): Iterator[Int] = {
+  def adjTo(v: T): Iterator[T] = {
     adjVertices.get(v) match {
-      case None => new Stack[Int]
+      case None => new Stack[T]
       case _ => adjVertices.get(v).get
     }
   }
 }
 
 /* Builds the Graph */
-class GraphBuilder {
+class GraphBuilder[T] {
 
   var numOfVertices: Int = 0
-  var adjVertices: Map[Int, Stack[Int]] = Map()
+  var adjVertices: Map[T, Stack[T]] = Map()
 
-  def addEdge(v: Int, w: Int): GraphBuilder = {
+  def addEdge(v: T, w: T): GraphBuilder[T] = {
 
     val adjVerticesOf = adjVertices.get(v) match {
-      case None => new Stack[Int]
+      case None => new Stack[T]
       case _ => adjVertices.get(v).get
     }
     adjVerticesOf.push(w)
@@ -45,5 +45,5 @@ class GraphBuilder {
     this
   }
 
-  def build: Graph = new Graph(numOfVertices, adjVertices)
+  def build: Graph[T] = new Graph[T](numOfVertices, adjVertices)
 }
