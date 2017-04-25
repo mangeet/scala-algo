@@ -1,4 +1,4 @@
 # scala-algo
 Algorithms in Scala
 
-- DFS
+- DFS(Search, Connected Components, Shortest-paths, Adjacent Vertices)
