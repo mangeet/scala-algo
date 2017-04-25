@@ -12,9 +12,11 @@ object DepthFirstSearch {
     // 2 -> 5 -> 6
     val graph = new GraphBuilder[Int]().addEdge(1, 2).addEdge(2, 3).addEdge(3, 7).addEdge(1, 4).addEdge(4, 6).
       addEdge(6, 7).addEdge(2, 5).addEdge(5, 6).build
+
     val dfs = DepthFirstSearch[Int](graph, 1)
 
     println(s"Connected[1 -> 7] ?: $dfs.connected(7)")
+    println(s"Connected[1 -> 6] ?: $dfs.connected(6)")
   }
 }
 
