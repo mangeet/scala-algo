@@ -4,6 +4,7 @@ package me.play.algo
   * Created by mangeeteden on 4/24/17.
   */
 object Queue {
+
   def main(args: Array[String]) {
 
     val queue = new Queue[String]
@@ -15,11 +16,12 @@ object Queue {
   }
 }
 
-class Queue[T] {
+class Queue[T] extends Iterator[T] {
+
   private var first: Node[T] = null
   private var last: Node[T] = null
 
-  def isEmpty: Boolean = {
+  override def isEmpty: Boolean = {
     return first == null
   }
 
@@ -43,5 +45,13 @@ class Queue[T] {
       last = null
     }
     return item
+  }
+
+  override def next(): T = {
+    dequeue
+  }
+
+  override def hasNext = {
+    !isEmpty
   }
 }
