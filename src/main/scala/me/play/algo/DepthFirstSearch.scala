@@ -10,7 +10,7 @@ object DepthFirstSearch {
     testGraph2
   }
 
-  def testGraph1 = {
+  def testGraph1: Unit = {
 
     // 1 -> 2 -> 3 -> 7
     // 1 -> 4 -> 6 -> 7
@@ -28,7 +28,7 @@ object DepthFirstSearch {
     println(s"Path to [2 -> 7] ?: ${dfs.pathTo(7).toList}")
   }
 
-  def testGraph2 = {
+  def testGraph2: Unit = {
 
     // 1 -> 2 -> 3 -> 4 -> 5 -> 8
     // 2 -> 6 -> 7 -> 8
@@ -93,7 +93,7 @@ case class DepthFirstSearch[T](graph: Graph[T], sourceVertex: T) {
     if (connected(targetVertex) && targetVertex != sourceVertex) {
 
       val path = paths.get(sourceVertex) match {
-        case None => {
+        case None =>
 
           val newPath = new Queue[T]
           newPath.enqueue(sourceVertex)
@@ -107,7 +107,6 @@ case class DepthFirstSearch[T](graph: Graph[T], sourceVertex: T) {
 
           paths += targetVertex -> newPath
           newPath
-        }
         case _ => paths.get(sourceVertex).get
       }
       path
